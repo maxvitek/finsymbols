@@ -60,7 +60,7 @@ def wiki_html(url, file_name):
         opener = urllib2.build_opener()
         return opener.open("file://" + str(file_path)).read()
     else:
-        wiki_html = fetch_file('http://en.wikipedia.org/wiki/'+str(url))
+        wiki_html = fetch_file('https://en.wikipedia.org/wiki/'+str(url))
         saved_file = open(str(file_path), "w")
         saved_file.write(wiki_html)
         saved_file.close()
@@ -72,7 +72,7 @@ def get_csv(exchange):
     Downloads the symbol list for each exchange from Nasdaq
     """    
     module_path = os.path.dirname(os.path.realpath(__file__))
-    exchanges_dir = os.path.join(module_path,'exchanges')
+    exchanges_dir = os.path.join(module_path, 'exchanges')
     file_path = os.path.abspath(exchanges_dir) + os.sep + exchange + '.csv'
     
     if os.path.exists(file_path) and is_cached(file_path):
